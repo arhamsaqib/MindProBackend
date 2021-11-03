@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BasicInformationController;
 use App\Http\Controllers\ContestantController;
 use App\Http\Controllers\JudgeController;
+use App\Http\Controllers\ContestantAttemptController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,5 @@ Route::apiResource('/user',UserController::class);
 Route::apiResource('/basic-information',BasicInformationController::class);
 Route::apiResource('/contestant',ContestantController::class);
 Route::apiResource('/judge',JudgeController::class);
+
+Route::apiResource('/contestant-attempt',ContestantAttemptController::class);
