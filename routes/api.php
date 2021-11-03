@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BasicInformationController;
+use App\Http\Controllers\ContestantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ use App\Http\Controllers\BasicInformationController;
 
 Route::apiResource('/user',UserController::class);
 Route::apiResource('/basic-information',BasicInformationController::class);
+Route::apiResource('/contestant',ContestantController::class);
