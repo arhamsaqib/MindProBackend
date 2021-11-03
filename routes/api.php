@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BasicInformationController;
 use App\Http\Controllers\ContestantController;
+use App\Http\Controllers\JudgeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,4 @@ use App\Http\Controllers\ContestantController;
 Route::apiResource('/user',UserController::class);
 Route::apiResource('/basic-information',BasicInformationController::class);
 Route::apiResource('/contestant',ContestantController::class);
+Route::apiResource('/judge',JudgeController::class);
