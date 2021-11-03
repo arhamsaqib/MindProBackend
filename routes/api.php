@@ -9,6 +9,7 @@ use App\Http\Controllers\JudgeController;
 use App\Http\Controllers\ContestantAttemptController;
 use App\Http\Controllers\AttemptController;
 use App\Http\Controllers\JudgeWordsController;
+use App\Http\Controllers\WordsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,4 @@ Route::apiResource('/contestant-attempt',ContestantAttemptController::class);
 Route::apiResource('/attempt',AttemptController::class);
 
 Route::apiResource('/judge-words',JudgeWordsController::class);
+Route::apiResource('/word',WordsController::class);
