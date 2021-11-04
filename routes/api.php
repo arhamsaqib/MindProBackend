@@ -12,6 +12,7 @@ use App\Http\Controllers\JudgeWordsController;
 use App\Http\Controllers\WordsController;
 use App\Http\Controllers\ContestantLabels;
 use App\Http\Controllers\LabelsController;
+use App\Http\Controllers\LabelMakerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,4 @@ Route::apiResource('/word',WordsController::class);
 
 Route::apiResource('/contestant-labels',ContestantLabels::class);
 Route::apiResource('/labels',LabelsController::class);
+Route::apiResource('/make-label',LabelMakerController::class);
