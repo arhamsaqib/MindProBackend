@@ -13,6 +13,7 @@ use App\Http\Controllers\WordsController;
 use App\Http\Controllers\ContestantLabels;
 use App\Http\Controllers\LabelsController;
 use App\Http\Controllers\LabelMakerController;
+use App\Http\Controllers\UserAllDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ Route::apiResource('/user',UserController::class);
 Route::apiResource('/basic-information',BasicInformationController::class);
 Route::apiResource('/contestant',ContestantController::class);
 Route::apiResource('/judge',JudgeController::class);
+Route::apiResource('/user-all-details',UserAllDetailsController::class);
 
 Route::apiResource('/contestant-attempt',ContestantAttemptController::class);
 Route::apiResource('/attempt',AttemptController::class);
