@@ -33,7 +33,7 @@ class JudgeWordsController extends Controller
         return $new;
     }
     public function show($id){
-        $user = Words::whereJudge_id($id)->get();
+        $user = Words::whereJudge_id($id)->latest()->get();
         if(isset($user)){
             return $user;
         }
