@@ -10,7 +10,7 @@ class ContestantAttemptController extends Controller
 {
     public function store(Request $request){
         $request->validate([
-            'uid' => 'required|string',
+            'cid' => 'required|string',
             'word_id' => 'required|string',
             'time_taken' => 'sometimes|string',
             'score' => 'required|string',
@@ -21,7 +21,7 @@ class ContestantAttemptController extends Controller
 
         $new= ContestantAttempts::create(
             [
-                'uid' => $request->uid,
+                'cid' => $request->uid,
                 'word_id' => $request->word_id,
                 'time_taken' => $request->time_taken,
                 'score' => $request->score,
