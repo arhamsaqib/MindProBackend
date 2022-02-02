@@ -31,4 +31,25 @@ class WordsController extends Controller
         $user = Words::where('id', $id)->delete();
         return $user;
     }
+    public function getWordsWithFilter(Request $request){
+        $time = $request->time_allowed;
+        $category = $request->category;
+       
+        if(isset($time) && !isset($category)){
+            $timefiltered = Words::where('time_allowed', $time)->get();
+            return $timefiltered;
+        }
+        if(!isset($time) && isset($category)){
+            $categoryFiltered = Words::where('category', $category)->get();
+            return $categoryFiltered;
+        }
+        if(isset($time) && isset($category)){
+            $allfiltered = Words::where(['category' => $category,'time_allowed' => $time])->get();
+            return $allfiltered;
+        }
+        if(!isset($time) && !isset($category)){
+            $all = Words::all();
+            return $all;
+        }
+    }
 }

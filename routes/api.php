@@ -41,6 +41,8 @@ Route::apiResource('/attempt',AttemptController::class);
 
 Route::apiResource('/judge-words',JudgeWordsController::class);
 Route::apiResource('/word',WordsController::class);
+Route::post('/words-filtered', [WordsController::class,'getWordsWithFilter']);
+
 
 Route::apiResource('/contestant-labels',ContestantLabels::class);
 Route::apiResource('/labels',LabelsController::class);
