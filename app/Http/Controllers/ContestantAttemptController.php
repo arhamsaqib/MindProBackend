@@ -21,7 +21,7 @@ class ContestantAttemptController extends Controller
 
         $new= ContestantAttempts::create(
             [
-                'cid' => $request->uid,
+                'cid' => $request->cid,
                 'word_id' => $request->word_id,
                 'time_taken' => $request->time_taken,
                 'score' => $request->score,
