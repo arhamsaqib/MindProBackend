@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ContestantAttempts;
 
-
-class ContestantAttemptController extends Controller
+class WordAttemptsController extends Controller
 {
     public function store(Request $request){
         $request->validate([
@@ -32,7 +31,7 @@ class ContestantAttemptController extends Controller
         return $new;
     }
     public function show($id){
-        $user = ContestantAttempts::whereCid($id)->get();
+        $user = ContestantAttempts::whereWord_id($id)->get();
         if(isset($user)){
             return $user;
         }
@@ -46,7 +45,7 @@ class ContestantAttemptController extends Controller
         return $user;
     }
     public function destroy($id){
-        $user = ContestantAttempts::where('cid', $id)->delete();
+        $user = ContestantAttempts::where('word_id', $id)->delete();
         return $user;
     }
 }

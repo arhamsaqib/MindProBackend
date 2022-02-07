@@ -38,6 +38,46 @@ class UserAllDetailsController extends Controller
             'message' => 'Record not found.'
         ], 404);
     }
+    public function judgeAllDetails($id){
+        $j = Judges::whereId($id)->first();
+        if(isset($j)){
+            $uid =  $j->uid;
+               $user = User::whereId($uid)->first();
+                if(isset($user)){
+                   return $user;
+                }
+                else{
+                    return response()->json([
+                        'message' => 'User connected to judge not found.'
+                    ], 404);
+                }
+        }
+        else{
+            return response()->json([
+                'message' => 'Record not found.'
+            ], 404);
+        }
+    }
+    public function contestantAllDetails($id){
+        $j = Contestants::whereId($id)->first();
+        if(isset($j)){
+            $uid =  $j->uid;
+               $user = User::whereId($uid)->first();
+                if(isset($user)){
+                   return $user;
+                }
+                else{
+                    return response()->json([
+                        'message' => 'User connected to contestant not found.'
+                    ], 404);
+                }
+        }
+        else{
+            return response()->json([
+                'message' => 'Record not found.'
+            ], 404);
+        }
+    }
     public function index(){
         return response()->json([
             'message' => 'Method not allowed.'

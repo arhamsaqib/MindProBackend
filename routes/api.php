@@ -14,6 +14,7 @@ use App\Http\Controllers\ContestantLabels;
 use App\Http\Controllers\LabelsController;
 use App\Http\Controllers\LabelMakerController;
 use App\Http\Controllers\UserAllDetailsController;
+use App\Http\Controllers\WordAttemptsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +36,13 @@ Route::apiResource('/basic-information',BasicInformationController::class);
 Route::apiResource('/contestant',ContestantController::class);
 Route::apiResource('/judge',JudgeController::class);
 Route::apiResource('/user-all-details',UserAllDetailsController::class);
+Route::get('/judge-all-details/{id}', [UserAllDetailsController::class,'judgeAllDetails']);
+Route::get('/contestant-all-details/{id}', [UserAllDetailsController::class,'contestantAllDetails']);
+
 
 Route::apiResource('/contestant-attempt',ContestantAttemptController::class);
 Route::apiResource('/attempt',AttemptController::class);
+Route::apiResource('/word-attempts',WordAttemptsController::class);
 
 Route::apiResource('/judge-words',JudgeWordsController::class);
 Route::apiResource('/word',WordsController::class);
