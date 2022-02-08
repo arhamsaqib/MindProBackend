@@ -18,7 +18,7 @@ class CreateBasicInformationTable extends Migration
             $table->string('uid')->unique();
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
-            $table->string('avatar')->nullable();
+            $table->text('avatar')->nullable();
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->timestamps();
