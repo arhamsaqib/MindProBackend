@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BasicInformation;
+use App\Models\User;
 
 
 class BasicInformationController extends Controller
@@ -34,8 +35,21 @@ class BasicInformationController extends Controller
     }
     public function show($id){
         $user = BasicInformation::whereUid($id)->first();
+        $u = User::whereId($id)->first();
         if(isset($user)){
-            return $user;
+            //return [$user,$u];
+            $data = [
+                'id' => $u->id,
+                'username' => $u->username,
+                'email' => $u->email,
+                'status' => $u->status,
+                'fname' => $user->fname,
+                'lame' => $user->lname,
+                'avatar' => $user->avatar,
+                'country' => $user->country,
+                'city' => $user->city,
+            ];
+            return $data;
         }
     
         return response()->json([
