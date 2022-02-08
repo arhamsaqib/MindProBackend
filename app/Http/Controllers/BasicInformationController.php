@@ -44,7 +44,7 @@ class BasicInformationController extends Controller
                 'email' => $u->email,
                 'status' => $u->status,
                 'fname' => $user->fname,
-                'lame' => $user->lname,
+                'lname' => $user->lname,
                 'avatar' => $user->avatar,
                 'country' => $user->country,
                 'city' => $user->city,
