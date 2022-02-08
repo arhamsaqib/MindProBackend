@@ -16,6 +16,7 @@ use App\Http\Controllers\LabelMakerController;
 use App\Http\Controllers\UserAllDetailsController;
 use App\Http\Controllers\WordAttemptsController;
 use App\Http\Controllers\PerformersController;
+use App\Http\Controllers\AppVersionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,8 @@ Route::apiResource('/judge-words',JudgeWordsController::class);
 Route::apiResource('/word',WordsController::class);
 Route::post('/words-filtered', [WordsController::class,'getWordsWithFilter']);
 
+
+Route::apiResource('/version',AppVersionController::class);
 
 Route::apiResource('/contestant-labels',ContestantLabels::class);
 Route::apiResource('/labels',LabelsController::class);
