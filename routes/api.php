@@ -44,6 +44,7 @@ Route::apiResource('/contestant-attempt',ContestantAttemptController::class);
 Route::apiResource('/attempt',AttemptController::class);
 Route::apiResource('/word-attempts',WordAttemptsController::class);
 
+
 Route::apiResource('/judge-words',JudgeWordsController::class);
 Route::apiResource('/word',WordsController::class);
 Route::post('/words-filtered', [WordsController::class,'getWordsWithFilter']);
@@ -52,3 +53,4 @@ Route::post('/words-filtered', [WordsController::class,'getWordsWithFilter']);
 Route::apiResource('/contestant-labels',ContestantLabels::class);
 Route::apiResource('/labels',LabelsController::class);
 Route::apiResource('/make-label',LabelMakerController::class);
+Route::post('/judge-specific-lables', [LabelsController::class,'judgeSpecificLabels']);

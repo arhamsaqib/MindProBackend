@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Judges;
 use App\Models\Contestants;
+use Illuminate\Support\Collection;
 
 
 class UserAllDetailsController extends Controller
