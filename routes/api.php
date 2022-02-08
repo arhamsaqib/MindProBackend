@@ -15,6 +15,7 @@ use App\Http\Controllers\LabelsController;
 use App\Http\Controllers\LabelMakerController;
 use App\Http\Controllers\UserAllDetailsController;
 use App\Http\Controllers\WordAttemptsController;
+use App\Http\Controllers\PerformersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,3 +55,7 @@ Route::apiResource('/contestant-labels',ContestantLabels::class);
 Route::apiResource('/labels',LabelsController::class);
 Route::apiResource('/make-label',LabelMakerController::class);
 Route::post('/judge-specific-lables', [LabelsController::class,'judgeSpecificLabels']);
+
+Route::get('/judge-performers/{id}', [PerformersController::class,'getJudgePerformers']);
+Route::get('/judge-top-performers/{id}', [PerformersController::class,'getJudgeTopPerformers']);
+Route::get('/word-top-performers/{id}', [PerformersController::class,'wordTopPerformers']);
