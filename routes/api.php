@@ -17,6 +17,7 @@ use App\Http\Controllers\UserAllDetailsController;
 use App\Http\Controllers\WordAttemptsController;
 use App\Http\Controllers\PerformersController;
 use App\Http\Controllers\AppVersionController;
+use App\Http\Controllers\LabelDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,13 +52,14 @@ Route::apiResource('/judge-words',JudgeWordsController::class);
 Route::apiResource('/word',WordsController::class);
 Route::post('/words-filtered', [WordsController::class,'getWordsWithFilter']);
 
-
 Route::apiResource('/version',AppVersionController::class);
 
 Route::apiResource('/contestant-labels',ContestantLabels::class);
 Route::apiResource('/labels',LabelsController::class);
 Route::apiResource('/make-label',LabelMakerController::class);
 Route::post('/judge-specific-lables', [LabelsController::class,'judgeSpecificLabels']);
+Route::post('/judge-specific-label-details', [LabelDetailsController::class,'judgeSpecificLabelDetails']);
+Route::post('/global-label-details', [LabelDetailsController::class,'globalLabelDetails']);
 
 Route::get('/judge-performers/{id}', [PerformersController::class,'getJudgePerformers']);
 Route::get('/judge-top-performers/{id}', [PerformersController::class,'getJudgeTopPerformers']);
