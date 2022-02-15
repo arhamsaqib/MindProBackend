@@ -18,6 +18,7 @@ use App\Http\Controllers\WordAttemptsController;
 use App\Http\Controllers\PerformersController;
 use App\Http\Controllers\AppVersionController;
 use App\Http\Controllers\LabelDetailsController;
+use App\Http\Controllers\ContestantStatisticsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,3 +65,6 @@ Route::post('/global-label-details', [LabelDetailsController::class,'globalLabel
 Route::get('/judge-performers/{id}', [PerformersController::class,'getJudgePerformers']);
 Route::get('/judge-top-performers/{id}', [PerformersController::class,'getJudgeTopPerformers']);
 Route::get('/word-top-performers/{id}', [PerformersController::class,'wordTopPerformers']);
+
+Route::post('/contestant-statistics-for-judge', [ContestantStatisticsController::class,'getStatisticsForJudge']);
+Route::post('/contestant-statistics-global', [ContestantStatisticsController::class,'getStatisticsGlobal']);

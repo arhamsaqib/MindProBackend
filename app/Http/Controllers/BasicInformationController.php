@@ -51,6 +51,15 @@ class BasicInformationController extends Controller
             ];
             return $data;
         }
+        if(isset($u) && !isset($user)){
+            $data = [
+                'id' => $u->id,
+                'username' => $u->username,
+                'email' => $u->email,
+                'status' => $u->status,
+            ];
+            return $data;
+        }
     
         return response()->json([
             'message' => 'Record not found.'
