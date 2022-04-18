@@ -29,7 +29,23 @@ class JudgeWordsController extends Controller
                 'category' => $request->category,
                 'word' => $request->word,
                 'time_allowed' => $request->time_allowed,
+                'status' => 'active',
             ]);
+        return $new;
+    }
+    public function update($id,Request $request){
+        $data = $request->validate([
+            'hint1' => 'sometimes',
+            'hint2' => 'sometimes',
+            'hint3' => 'sometimes',
+            'category' => 'sometimes',
+            'word' => 'sometimes',
+            'time_allowed' => 'sometimes',
+            'status' => 'sometimes',
+        ]);
+        $provider = Words::whereId($id)->first();
+        $collection = collect($data)->filter()->all();
+        $new = $provider->update($collection);
         return $new;
     }
     public function show($id){

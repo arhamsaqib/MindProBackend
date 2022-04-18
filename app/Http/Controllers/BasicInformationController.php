@@ -65,6 +65,19 @@ class BasicInformationController extends Controller
             'message' => 'Record not found.'
         ], 404);
     }
+    public function update($id,Request $request){
+        $data = $request->validate([
+            'fname' => 'sometimes',
+            'lname' => 'sometimes',
+            'city' => 'sometimes',
+            'country' => 'sometimes',
+            'avatar' => 'sometimes',
+        ]);
+        $provider = BasicInformation::whereUid($id)->first();
+        $collection = collect($data)->filter()->all();
+        $new = $provider->update($collection);
+        return $new;
+    }
     public function index(){
         $user = basicInformation::all();
         return $user;

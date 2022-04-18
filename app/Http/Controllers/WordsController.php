@@ -24,7 +24,7 @@ class WordsController extends Controller
         ], 404);
     }
     public function index(){
-        $user = Words::all();
+        $user = Words::whereStatus('active')->latest()->get();
         return $user;
     }
     public function destroy($id){
@@ -36,19 +36,19 @@ class WordsController extends Controller
         $category = $request->category;
        
         if(isset($time) && !isset($category)){
-            $timefiltered = Words::where('time_allowed', $time)->get();
+            $timefiltered = Words::where(['time_allowed'=> $time,'status'=>'active'])->get();
             return $timefiltered;
         }
         if(!isset($time) && isset($category)){
-            $categoryFiltered = Words::where('category', $category)->get();
+            $categoryFiltered = Words::where(['category'=> $category,'status'=>'active'])->get();
             return $categoryFiltered;
         }
         if(isset($time) && isset($category)){
-            $allfiltered = Words::where(['category' => $category,'time_allowed' => $time])->get();
+            $allfiltered = Words::where(['category' => $category,'time_allowed' => $time,'status'=>'active'])->get();
             return $allfiltered;
         }
         if(!isset($time) && !isset($category)){
-            $all = Words::all();
+            $all = Words::whereStatus('active')->latest()->get();
             return $all;
         }
     }

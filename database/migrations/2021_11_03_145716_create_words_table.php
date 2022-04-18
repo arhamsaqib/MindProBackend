@@ -22,6 +22,7 @@ class CreateWordsTable extends Migration
             $table->string('category')->nullable();
             $table->string('word')->nullable();
             $table->string('time_allowed')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
