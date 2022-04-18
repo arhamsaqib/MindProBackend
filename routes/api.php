@@ -20,6 +20,7 @@ use App\Http\Controllers\AppVersionController;
 use App\Http\Controllers\LabelDetailsController;
 use App\Http\Controllers\ContestantStatisticsController;
 use App\Http\Controllers\BugReportController;
+use App\Http\Controllers\ChangelogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,8 +56,8 @@ Route::apiResource('/word',WordsController::class);
 Route::post('/words-filtered', [WordsController::class,'getWordsWithFilter']);
 
 Route::apiResource('/version',AppVersionController::class);
-
 Route::apiResource('/bug-report',BugReportController::class);
+Route::apiResource('/changelogs',ChangelogController::class);
 
 Route::apiResource('/contestant-labels',ContestantLabels::class);
 Route::apiResource('/labels',LabelsController::class);
