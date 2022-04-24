@@ -20,6 +20,19 @@ class BugReportController extends Controller
         ]);
         return $new;
     }
+    public function update($bugId,Request $request){
+        $data = $request->validate([
+            'status' => 'sometimes',
+        ]);
+ 
+        $booking = ReportBugs::where(['id'=>$bugId])->first();
+         
+        $collection = collect($data)->filter()->all();
+ 
+         $new = $booking->update($collection);
+         return $new;
+      
+     }
     public function show($id){
         $user = ReportBugs::whereid($id)->get();
         return $user;
