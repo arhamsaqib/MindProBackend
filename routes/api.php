@@ -23,6 +23,7 @@ use App\Http\Controllers\BugReportController;
 use App\Http\Controllers\ChangelogController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ImagesController;
+use App\Http\Controllers\BugCommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,7 @@ Route::apiResource('/basic-information',BasicInformationController::class);
 Route::apiResource('/contestant',ContestantController::class);
 Route::apiResource('/categories',CategoriesController::class);
 Route::apiResource('/judge',JudgeController::class);
+Route::apiResource('/bug-comments',BugCommentsController::class);
 Route::apiResource('/user-all-details',UserAllDetailsController::class);
 Route::post('/upload-image', [ImagesController::class,'addImage']);
 Route::get('/judge-all-details/{id}', [UserAllDetailsController::class,'judgeAllDetails']);
