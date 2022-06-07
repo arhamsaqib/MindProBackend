@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Labels;
+use Illuminate\Support\Facades\DB;
 
 
 class ContestantLabels extends Controller
@@ -24,7 +25,9 @@ class ContestantLabels extends Controller
         return $new;
     }
     public function show($id){
-        $user = Labels::whereUid($id)->get();
+       $user = Labels::whereUid($id)->distinct('label')->get()->unique('label');
+        //$user = Labels::select('id','uid','label','attempt_id')->unique('label')->whereUid($id)->get();
+        //$user = Labels::whereUid($id)->select('label')->distinct()->get();
         if(isset($user)){
             return $user;
         }

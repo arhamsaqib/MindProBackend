@@ -17,7 +17,7 @@ class ContestantStatisticsController extends Controller
         ->where('words.judge_id','=',$jid)
         ->count();
         $right = DB::table('contestant_attempts')->whereCid($cid)
-        ->where('contestant_attempts.score','>=',3)
+        ->where('contestant_attempts.score','>=',5)
         ->join('words', 'words.id', '=', 'contestant_attempts.word_id')
         ->where('words.judge_id','=',$jid)
         ->count();
@@ -47,7 +47,7 @@ class ContestantStatisticsController extends Controller
         ->count();
 
         $right = DB::table('contestant_attempts')->whereCid($cid)
-        ->where('contestant_attempts.score','>=',3)
+        ->where('contestant_attempts.score','>=',5)
         ->join('words', 'words.id', '=', 'contestant_attempts.word_id')
         ->count();
 
