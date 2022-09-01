@@ -23,6 +23,23 @@ class ViolationsController extends Controller
         }
     }
 
+    public function getViolationDetailsById($uid){
+        $res = DB::table('Violations')
+        ->join('Basic_Information','Basic_Information.uid','=','Violations.uid')
+        ->select('Violations.uid','Violations.violation_type','Violations.word_id',
+        'Violations.status')
+        ->where('VIolations.uid',$uid)
+        ->get();
+
+        if(isset($res)){
+            return $res;
+        }else{
+            return response()->json([
+                'message' => 'Record not found.'
+            ], 404);
+        }
+    }
+
     public function getViolationInfo(){
         $res = DB::table('Violations')
         ->join('Basic_Information','Basic_Information.uid','=','Violations.uid')

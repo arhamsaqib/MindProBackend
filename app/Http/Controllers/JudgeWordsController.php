@@ -10,7 +10,7 @@ use App\Models\Violations;
 class JudgeWordsController extends Controller
 {
     public function hasViolations($check_word){
-        $blacklist_words = ['bullshit','heck','ass','balls','fuck'];
+        $blacklist_words = ['bullshit','heck','ass','balls','fuck','dick','asshole','motherfucker'];
         $check = in_array($check_word->word,$blacklist_words,true);
         if($check)
         {

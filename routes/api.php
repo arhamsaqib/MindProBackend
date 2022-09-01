@@ -87,5 +87,6 @@ Route::get('/totalContestants', [UserAllDetailsController::class,'ContestantCoun
 Route::get('/judge-basic-info',[JudgeController::class,'judgeBasicInfo']);
 Route::get('/contestant-basic-info',[ContestantController::class,'contestantBasicInfo']);
 Route::get('/check-violation',[JudgeWordsController::class,'hasViolations']);
-Route::get('/judge-violation-details',[ViolationsController::class,'getViolationDetails']);
+Route::get('/all-judges-violation-details',[ViolationsController::class,'getViolationDetails']);
+Route::get('/all-judges-violation-details/{id}',[ViolationsController::class,'getViolationDetailsById']);
 Route::get('/judge-violation-info',[ViolationsController::class,'getViolationInfo']);
