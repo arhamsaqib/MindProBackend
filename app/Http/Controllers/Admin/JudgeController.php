@@ -9,6 +9,6 @@ use App\Http\Controllers\Controller;
 class JudgeController extends Controller
 {
     public function index(){
-        return 'Hello';
+        return 'Hello g';
     }
 }
