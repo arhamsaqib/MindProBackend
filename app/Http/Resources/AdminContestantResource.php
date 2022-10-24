@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AdminJudgeResource extends JsonResource
+class AdminContestantResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -24,13 +24,11 @@ class AdminJudgeResource extends JsonResource
             'avatar'            => $this->avatar,
             'country'           => $this->country,
             'city'              => $this->city,
-            'judgeId'           => $this->judgeId,
+            'contestantId'           => $this->contestantId,
             'userId'            => $this->userId,
             'violations'        => 0,
-            // 'feedback'          => FeedbackResource::collection($this->feedback),
-            'feedback'          => [],
+            'feedback'          => []
         ];
-
         return $data;
     }
 }

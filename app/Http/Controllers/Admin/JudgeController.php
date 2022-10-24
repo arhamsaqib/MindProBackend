@@ -19,15 +19,20 @@ class JudgeController extends Controller
         ->select('users.username' , 'users.email', 'users.status' , 'users.created_at' , 'basic_information.fname',
                     'basic_information.lname','basic_information.avatar','basic_information.country',
                     'basic_information.city', 'judges.id as judgeId', 'users.id as userId','users.created_at')->get();
-        // $data = [];
-        // foreach ($judges as $j) {
-        //     $id = $j->userId;
-        //     $bugs = ReportBugs::whereUid($id)->get();
-        //     $data[] = [
-        //                 ...collect($j),
-        //                 'feedback' => $bugs,
-        //             ];
-        // }
+        $data = [];
+        foreach ($judges as $j) {
+            $id = $j->userId;
+            $bugs = ReportBugs::whereUid($id)->get();
+            $array    = collect($j);
+            $array['feedback'] = $bugs;
+            $data[] = $array;
+            // $data[] = [
+            //             ...collect($j),
+            //             'feedback' => $bugs,
+            //         ];
+        }
+        // return $data;
         return AdminJudgeResource::collection($judges);
+        // return AdminJudgeResource::collection($data);
     }
 }
