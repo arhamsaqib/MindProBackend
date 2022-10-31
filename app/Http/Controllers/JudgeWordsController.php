@@ -4,10 +4,70 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Words;
+use App\Models\Violations;
 
 
 class JudgeWordsController extends Controller
 {
+    public function hasViolations($scanWord){
+        $blacklist_words = ['bullshit','heck','ass','balls','fuck','dick','asshole','motherfucker',
+    'cunt'];
+        //Checking Word
+        $check = in_array($scanWord->word,$blacklist_words,true);
+        if($check)
+        {
+            Violations::create([
+                'uid'=>$scanWord->judge_id,
+                'word_id'=>$scanWord->id,
+                'violation_type'=>'Abusive Word',
+                'status'=>'banned',
+            ]);
+            return true;
+        }
+        // Checking Hint 1
+        else{
+            $check = in_array($scanWord->hint1,$blacklist_words,true);
+            if($check)
+            {
+                Violations::create([
+                    'uid'=>$scanWord->judge_id,
+                    'word_id'=>$scanWord->id,
+                    'violation_type'=>'Abusive hint 1',
+                    'status'=>'banned',
+                ]);
+                return true;
+            }
+            // Checking Hint 2
+            else{
+                $check = in_array($scanWord->hint2,$blacklist_words,true);
+                if($check)
+                {
+                    Violations::create([
+                        'uid'=>$scanWord->judge_id,
+                        'word_id'=>$scanWord->id,
+                        'violation_type'=>'Abusive hint 2',
+                        'status'=>'banned',
+                    ]);
+                    return true;
+                }
+                //Checking Hint 3
+                else{
+                    $check = in_array($scanWord->hint3,$blacklist_words,true);
+                    if($check)
+                    {
+                        Violations::create([
+                            'uid'=>$scanWord->judge_id,
+                            'word_id'=>$scanWord->id,
+                            'violation_type'=>'Abusive hint 3',
+                            'status'=>'banned',
+                        ]);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
     
     public function store(Request $request){
         $request->validate([
@@ -31,6 +91,8 @@ class JudgeWordsController extends Controller
                 'time_allowed' => $request->time_allowed,
                 'status' => 'active',
             ]);
+
+        $foundViolation = $this->hasViolations($new);
         return $new;
     }
     public function update($id,Request $request){

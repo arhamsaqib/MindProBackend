@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\JudgeController;
 use App\Http\Controllers\Admin\ContestantController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\NotificationsController;
+use App\Http\Controllers\Admin\ViolationsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +22,7 @@ use App\Http\Controllers\Admin\DashboardController;
 Route::apiResource('/judge',JudgeController::class);
 Route::apiResource('/contestant',ContestantController::class);
 Route::apiResource('/dashboard',DashboardController::class);
-// Route::post('/upload-image', [ImagesController::class,'addImage']);
+//Route::get('/upload-image', [ImagesController::class,'addImage']);
+Route::get('/judge-violation-details/{id}',[ViolationsController::class,'getViolationDetailsById']);
+Route::get('/judges-violation-info',[ViolationsController::class,'getViolationInfo']);
+Route::post('/post-judge-notification', [NotificationsController::class,'postJudgeNotification']);
