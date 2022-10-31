@@ -25,6 +25,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\BugCommentsController;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
