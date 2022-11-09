@@ -57,4 +57,15 @@ class ViolationsController extends Controller
             return ['success' => false];
         }
     }
+    public function getViolationCount($uid){
+        $count = Violations::whereUid($uid)->count();
+        if(isset($count))
+        {
+            return $count;
+        }
+        else
+        {
+            return ['success' => false];
+        }
+    }
 }

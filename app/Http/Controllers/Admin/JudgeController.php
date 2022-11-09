@@ -26,13 +26,7 @@ class JudgeController extends Controller
             $array    = collect($j);
             $array['feedback'] = $bugs;
             $data[] = $array;
-            // $data[] = [
-            //             ...collect($j),
-            //             'feedback' => $bugs,
-            //         ];
         }
-        // return $data;
         return AdminJudgeResource::collection($judges);
-        // return AdminJudgeResource::collection($data);
     }
 }
