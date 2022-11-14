@@ -33,6 +33,7 @@ Route::post('/signout', [AdminAuthController::class,'signout']);
     
         Route::apiResource('/basic-information',BasicInformationController::class);
         Route::apiResource('/judge',JudgeController::class);
+        Route::apiResource('/judge',JudgeController::class);
         Route::apiResource('/contestant',ContestantController::class);
         Route::apiResource('/dashboard',DashboardController::class);
         //Route::get('/upload-image', [ImagesController::class,'addImage']);
