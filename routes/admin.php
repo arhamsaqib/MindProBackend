@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ViolationsController;
 use App\Http\Controllers\Admin\WarningsController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\BasicInformationController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,7 @@ Route::post('/signout', [AdminAuthController::class,'signout']);
         Route::post('/post-judge-notification', [NotificationsController::class,'postJudgeNotification']);
         Route::post('/post-judge-warning', [WarningsController::class,'postJudgeWarning']);
         Route::get('/fetch-user-feedback/{uid}', [FeedbackController::class,'fetchUserFeedback']);
+        Route::get('/contestant-stat-details/{cid}', [ContestantController::class,'contestantStatDetails']);
+        Route::post('/change-user-status', [UserController::class,'changeUserStatus']);
     
     
