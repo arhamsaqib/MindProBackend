@@ -44,4 +44,22 @@ class UserController extends Controller
         $user = User::where('id', $id)->delete();
         return $user;
     }
+
+    public function changeUserStatus( Request $request ){
+        $data = $request->validate([
+            'userId' => 'required',
+            'status' => 'required',
+        ]);
+
+        $user = User::whereId($data['userId'])->first();
+
+        if ($user){
+            $user->status = $data['status'];
+            $user->save();
+
+            return ['success' => true];
+        }
+
+        return ['success' => false];
+    }
 }

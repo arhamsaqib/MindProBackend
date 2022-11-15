@@ -28,7 +28,8 @@ class ViolationsController extends Controller
     public function getViolationDetailsById($uid){
         $res = DB::table('violations')
         ->join('basic_information','basic_information.uid','=','violations.uid')
-        ->select('violations.uid as jid','violations.violation_type','violations.word_id',
+        ->join('users','users.id','=','basic_information.uid')
+        ->select('users.status as userStatus','violations.uid as jid','violations.violation_type','violations.word_id',
         'violations.status')
         ->where('violations.uid',$uid)
         ->get();
