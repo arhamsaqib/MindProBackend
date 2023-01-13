@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use App\Http\Resources\AdminResource;
 
 class AdminAuthController extends Controller
 {
@@ -38,6 +39,7 @@ class AdminAuthController extends Controller
                 'token' => $user->api_token,
                 'email' => $user->email,
                 'id' => $user->id,
+                'role' => $user->role,
             ];
         }
         return ['success' => false];
@@ -54,7 +56,7 @@ class AdminAuthController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'api_token' => Str::random(60),
-
+            'role'      => 'admin',
         ]);
     }
 
@@ -63,5 +65,44 @@ class AdminAuthController extends Controller
         Auth::logout();
   
         return Redirect('login');
+    }
+
+    public function authenticate(Request $request){
+        $request->validate([
+            'token' => 'required',
+        ]);
+        $user = Admins::where(['api_token' => $request->token])->first();
+
+        if (isset($user)){
+            return [
+                'username' => $user->username,
+                'token' => $user->api_token,
+                'email' => $user->email,
+                'id' => $user->id,
+                'role' => $user->role,
+            ];
+        }
+        return ['success' => false];
+    }
+
+    public function index(){
+        $admins =  Admins::all();
+        return AdminResource::collection($admins);
+    }
+
+    public function addAdmin(Request $request){
+
+        $data = $request->validate([
+            'username' => 'required',
+            'email' => 'required|email|unique:admins',
+        ]);
+        $pass = "12345678";
+        return Admins::create([
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => Hash::make($pass),
+            'api_token' => Str::random(60),
+            'role'      => 'admin',
+        ]);
     }
 }
