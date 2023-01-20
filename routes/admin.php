@@ -27,6 +27,7 @@ use App\Http\Controllers\UserController;
 Route::post('/register', [AdminAuthController::class,'register']);
 Route::post('/login', [AdminAuthController::class,'login']);
 Route::post('/signout', [AdminAuthController::class,'signout']);
+Route::post('/authenticate', [AdminAuthController::class,'authenticate']);
 
 
 // Route::middleware('auth:api')->group(function () {
@@ -45,5 +46,6 @@ Route::post('/signout', [AdminAuthController::class,'signout']);
         Route::get('/fetch-user-feedback/{uid}', [FeedbackController::class,'fetchUserFeedback']);
         Route::get('/contestant-stat-details/{cid}', [ContestantController::class,'contestantStatDetails']);
         Route::post('/change-user-status', [UserController::class,'changeUserStatus']);
+        Route::get('/admins', [AdminAuthController::class,'index']);
     
     
