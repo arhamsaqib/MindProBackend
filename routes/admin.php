@@ -47,5 +47,5 @@ Route::post('/authenticate', [AdminAuthController::class,'authenticate']);
         Route::get('/contestant-stat-details/{cid}', [ContestantController::class,'contestantStatDetails']);
         Route::post('/change-user-status', [UserController::class,'changeUserStatus']);
         Route::get('/admins', [AdminAuthController::class,'index']);
-    
-    
+        Route::post('/add-admin', [AdminAuthController::class,'addAdmin']);
+        Route::post('/update-admin', [AdminAuthController::class,'updateAdmin']);

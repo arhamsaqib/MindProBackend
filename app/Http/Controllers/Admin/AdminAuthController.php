@@ -32,7 +32,7 @@ class AdminAuthController extends Controller
         $password = $request->password;
         $user = Admins::where(['email' => $request->email])->first();
  
-        if ( isset($user) && Hash::check($password, $user->password)) {
+        if ( isset($user) && Hash::check($password, $user->password)&& $user->status=='active') {
 
             return [
                 'username' => $user->username,
@@ -40,6 +40,7 @@ class AdminAuthController extends Controller
                 'email' => $user->email,
                 'id' => $user->id,
                 'role' => $user->role,
+                'status'=>$user->status,
             ];
         }
         return ['success' => false];
@@ -57,6 +58,7 @@ class AdminAuthController extends Controller
             'password' => Hash::make($data['password']),
             'api_token' => Str::random(60),
             'role'      => 'admin',
+            'status'=>'active',
         ]);
     }
 
@@ -80,6 +82,7 @@ class AdminAuthController extends Controller
                 'email' => $user->email,
                 'id' => $user->id,
                 'role' => $user->role,
+                'status' => $user->status,
             ];
         }
         return ['success' => false];
@@ -103,6 +106,24 @@ class AdminAuthController extends Controller
             'password' => Hash::make($pass),
             'api_token' => Str::random(60),
             'role'      => 'admin',
+            'status'      => 'active',
         ]);
+    }
+
+    public function updateAdmin(Request $request){
+        
+        $data = $request->validate([
+            'username' => 'sometimes',
+            'email' => 'sometimes',
+            'password' => 'sometimes',
+            'role' => 'sometimes',
+            'status' => 'sometimes',
+        ]);
+        $admin=Admins::whereId($request->id)->first();
+
+        if(!isset($admin)) return['success'=>false];
+
+        $admin->update($data);
+        return['success'=>true];
     }
 }

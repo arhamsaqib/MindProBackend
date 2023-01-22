@@ -20,6 +20,7 @@ class AdminResource extends JsonResource
             'id'            => $this->id,
             'createdAt'         => $this->created_at,
             'role'         => $this->role,
+            'status'         => $this->status,
         ];
         return $data;
     }
